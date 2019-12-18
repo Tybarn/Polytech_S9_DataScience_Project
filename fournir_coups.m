@@ -9,10 +9,7 @@ liste_coups = [];
 %if note ~= -1
     if trait
         for fleche = ['g','d','h','b']
-            [coup,note] = glisse(position,fleche);
-            disp(fleche);
-            disp(note);
-            
+            coup = glisse(position,fleche);
             if ~isempty(find(coup.M ~= position.M))
                 liste_coups = [liste_coups,coup];
             end

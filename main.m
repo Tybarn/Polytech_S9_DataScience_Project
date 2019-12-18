@@ -19,7 +19,7 @@ while fleche ~= 's'
     
     %Application du coup du joueur
     fleche = pressee();
-    [position,note] = glisse(position, fleche);
+    position = glisse(position, fleche);
     afficher_position(position);
     trait = ~trait;
 end
