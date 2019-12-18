@@ -1,13 +1,27 @@
-position.M = [0 0 0 0;0 0 0 0;0 0 0 0;0 0 0 0];
-trait = false;
-fleche = 'h';
+position.M = [2,0,0,0;0,0,0,0;0,0,0,0;0,0,0,0];
+afficher_position(position);
+fleche = 'a'; % Valeur de base inutile, juste pour entrer dans la boucle
+trait = 0;
 while fleche ~= 's'
+    %Générateur de nouvelles cases
+    liste_coups = fournir_coups(position,trait);
+    [line,col] = size(liste_coups);
+    if col == 0
+        break;
+    end
+    i = randi(col);
+    position = liste_coups(i);
     afficher_position(position);
     
-    liste_coups = fournir_coups(position,trait);
+    %Calcul des coups possible du joueur
     trait = ~trait;
-    if trait
-        fleche = pressee();
-    end
-    display(position.M);
+    liste_coups = fournir_coups(position,trait);
+    
+    %Application du coup du joueur
+    fleche = pressee();
+    [position,note] = glisse(position, fleche);
+    afficher_position(position);
+    trait = ~trait;
 end
+
+disp("GAME TERMINEE")

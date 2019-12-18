@@ -1,3 +1,4 @@
+%Affichage du jeu
 function afficher_position(position)
 
 M            = position.M;

@@ -1,3 +1,4 @@
+%Récupère une entrée utilisateur
 function fleche = pressee()
 
 fleche = '';

@@ -1,5 +1,7 @@
-function position = glisse(position,fleche)
+%Modifie la matrice position selon la fleche
+function [position, note] = glisse(position,fleche)
 
+note = 0;
 M = position.M;
 
 if     fleche == 'g'
@@ -22,6 +24,7 @@ for j = 1 : 4
                 
                 if M(ii,j) == M(ii-1,j)
                     M(ii,j)   = M(ii,j)*2;
+                    note = note + M(ii,j);
                     M(ii-1,j) = 0;
                     imax      = ii - 1;
                 elseif M(ii,j) == 0

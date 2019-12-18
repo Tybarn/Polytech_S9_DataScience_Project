@@ -1,3 +1,5 @@
+% Utilisé pour calculer les coups possible, et seulement pour ca, ne
+% modifie en rien position
 function liste_coups = fournir_coups(position,trait)
 
 
@@ -6,16 +8,16 @@ liste_coups = [];
 
 %if note ~= -1
     if trait
-        display('glisse');
         for fleche = ['g','d','h','b']
-            coup = glisse(position,fleche);
+            [coup,note] = glisse(position,fleche);
+            disp(fleche);
+            disp(note);
             
             if ~isempty(find(coup.M ~= position.M))
                 liste_coups = [liste_coups,coup];
             end
         end
-    else
-        display("generate");
+    else %Génère des possibilités selon l'apparition des 2/4
         for i = 1 : 4
             for j = 1 : 4
                 if position.M(i,j) == 0
@@ -33,4 +35,4 @@ liste_coups = [];
 
 liste_coups = liste_coups(randperm(length(liste_coups)));
 
-
+end
