@@ -1,5 +1,5 @@
 position.M = [2,0,0,0;0,0,0,0;0,0,0,0;0,0,0,0];
-afficher_position(position);
+position.note = -1;
 fleche = 'a'; % Valeur de base inutile, juste pour entrer dans la boucle
 trait = 0;
 while fleche ~= 's'
@@ -13,15 +13,18 @@ while fleche ~= 's'
     position = liste_coups(i);
     afficher_position(position);
     
-    %Calcul des coups possible du joueur
+    %Calcul des coups possibles du joueur
     trait = ~trait;
     liste_coups = fournir_coups(position,trait);
     
     %Application du coup du joueur
     fleche = pressee();
     position = glisse(position, fleche);
+    position = fournir_note(position);
+    disp(position.M);
+    disp(position.note);
     afficher_position(position);
     trait = ~trait;
 end
 
-disp("GAME TERMINEE")
+disp("GAME TERMINEE");
