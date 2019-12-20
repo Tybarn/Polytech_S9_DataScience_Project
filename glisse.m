@@ -1,6 +1,7 @@
 %Modifie la matrice position selon la fleche
 function position = glisse(position,fleche)
 
+score = position.score;
 M = position.M;
 
 if     fleche == 'g'
@@ -25,6 +26,7 @@ for j = 1 : 4
                     M(ii,j)   = M(ii,j)*2;
                     M(ii-1,j) = 0;
                     imax      = ii - 1;
+                    score = score + M(ii,j);
                 elseif M(ii,j) == 0
                     M(ii,j)   = M(ii-1,j);
                     M(ii-1,j) = 0;
@@ -45,5 +47,6 @@ elseif fleche == 'd'
 end 
 
 position.M = M;
+position.score = score;
 
 end

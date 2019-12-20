@@ -1,5 +1,4 @@
 function position = fournir_note(position)
-disp("NOTATION")
 poidsCasesLibres = 1;
 poidsLissage = 2;
 poidsMonotonie = 5;
@@ -99,4 +98,3 @@ end
 noteMonotonie = noteLigne + noteColonne;
 
 position.note = noteCasesLibres + noteLissage + noteMonotonie;
-disp("-------------------------------------")

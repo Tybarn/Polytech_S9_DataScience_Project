@@ -1,5 +1,6 @@
 position.M = [2,0,0,0;0,0,0,0;0,0,0,0;0,0,0,0];
 position.note = -1;
+position.score = 0;
 fleche = 'a'; % Valeur de base inutile, juste pour entrer dans la boucle
 trait = 0;
 while fleche ~= 's'
@@ -20,10 +21,8 @@ while fleche ~= 's'
     %Application du coup du joueur
     fleche = pressee();
     position = glisse(position, fleche);
-    position = fournir_note(position);
-    disp(position.M);
-    disp(position.note);
     afficher_position(position);
+    disp(position.score);
     trait = ~trait;
 end
 
