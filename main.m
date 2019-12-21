@@ -27,5 +27,8 @@ end
 disp(position.score);
 afficher_position(position);
 disp("GAME TERMINEE");
+disp("temps (secondes): ");
 disp(toc(tstart));
+disp("plus grande valeur: ");
+disp(max(position.M(:)));
 pause(15);
