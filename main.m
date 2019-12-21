@@ -1,3 +1,4 @@
+tstart = tic;
 position.M = [2,0,0,0;0,0,0,0;0,0,0,0;0,0,0,0];
 position.score = 0;
 fleche = 'a'; % Valeur de base inutile, juste pour entrer dans la boucle
@@ -10,18 +11,21 @@ while fleche ~= 's'
     end
     i = randi(col);
     position = liste_coups(i);
-    afficher_position(position);
+    %afficher_position(position);
     
     %Calcul du prochain coup de l'IA
-    [bestPosition,note] = minmax(position, 3, 1);
+    [bestPosition,note] = minmax(position, 4, 1);
+    %disp(bestPosition.direction);
     
     %Application du coup du joueur
     %fleche = pressee();
     position = glisse(position, bestPosition.direction);
-    afficher_position(position);
+    %position = glisse(position, fleche);
+    %afficher_position(position);
 end
 
 disp(position.score);
 afficher_position(position);
 disp("GAME TERMINEE");
-pause(30);
+disp(toc(tstart));
+pause(15);

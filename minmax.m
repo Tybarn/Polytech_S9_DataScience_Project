@@ -1,5 +1,4 @@
 function [bestposition, note] = minmax(position, depth, max)
-    % les matrices de cet etage
     liste_coups = fournir_coups(position, max);
     [nope, nbCoups] = size(liste_coups);
     if depth == 0 || nbCoups == 0
