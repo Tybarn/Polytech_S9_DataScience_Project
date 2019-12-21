@@ -14,7 +14,6 @@ while fleche ~= 's'
     
     %Calcul du prochain coup de l'IA
     [bestPosition,note] = minmax(position, 3, 1);
-    disp(bestPosition.direction);
     
     %Application du coup du joueur
     %fleche = pressee();
@@ -22,4 +21,7 @@ while fleche ~= 's'
     afficher_position(position);
 end
 
+disp(position.score);
+afficher_position(position);
 disp("GAME TERMINEE");
+pause(30);
