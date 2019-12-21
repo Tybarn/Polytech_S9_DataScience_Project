@@ -1,9 +1,14 @@
+% Timer temps d'execution
 tstart = tic;
-position.M = [2,0,0,0;0,0,0,0;0,0,0,0;0,0,0,0];
+
+% Init de la grille
+position.M = [0,0,0,0;0,0,0,0;0,0,0,0;0,0,0,0];
 position.score = 0;
+
+% Boucle de jeu
 fleche = 'a'; % Valeur de base inutile, juste pour entrer dans la boucle
 while fleche ~= 's'
-    %Générateur de nouvelles cases
+    % Générateur de nouvelles cases
     liste_coups = fournir_coups(position,0);
     [line,col] = size(liste_coups);
     if col == 0
@@ -11,24 +16,26 @@ while fleche ~= 's'
     end
     i = randi(col);
     position = liste_coups(i);
+    
+    % --------- PARTIE JOUEUR REEL ---------
+    %afficher_position(position);
+    %fleche = pressee();
+    %position = glisse(position, fleche);
     %afficher_position(position);
     
-    %Calcul du prochain coup de l'IA
-    [bestPosition,note] = minmax(position, 4, 1);
-    %disp(bestPosition.direction);
-    
-    %Application du coup du joueur
-    %fleche = pressee();
+    % --------- PARTIE IA = JOUEUR ---------
+    [bestPosition,note] = minmax(position, 3, 1); %Calcul du prochain coup de l'IA
     position = glisse(position, bestPosition.direction);
-    %position = glisse(position, fleche);
     %afficher_position(position);
 end
 
-disp(position.score);
+% Affichage final
 afficher_position(position);
 disp("GAME TERMINEE");
 disp("temps (secondes): ");
-disp(toc(tstart));
+disp(toc(tstart)); % calcul temps d'execution
+disp("score : ");
+disp(position.score);
 disp("plus grande valeur: ");
 disp(max(position.M(:)));
-pause(15);
+pause(15); % Pour laisser le temps a matlab d'afficher la matrice
