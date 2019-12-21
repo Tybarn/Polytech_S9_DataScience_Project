@@ -1,4 +1,4 @@
-function position = fournir_note(position)
+function note = fournir_note(position)
 poidsCasesLibres = 1;
 poidsLissage = 2;
 poidsMonotonie = 5;
@@ -97,4 +97,4 @@ if bestVal ~= 0
 end
 noteMonotonie = noteLigne + noteColonne;
 
-position.note = noteCasesLibres + noteLissage + noteMonotonie;
+note = noteCasesLibres + noteLissage + noteMonotonie;
